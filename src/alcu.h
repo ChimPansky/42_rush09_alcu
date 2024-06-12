@@ -7,6 +7,8 @@
 # define ERROR_INPUT_FILE 	"Error opening input file!\n"
 # define ERROR_BOARD 		"Error: Invalid Board!\n"
 # define ERROR_READ_HEAPS 	"Error: Enter a number between 1 and 10000\n"
+# define ERROR_INVALID_MOVE	"Error: Invalid Move!\n"
+
 
 typedef unsigned long size_t;
 
@@ -17,7 +19,7 @@ enum	e_game_status {
 };
 
 typedef struct s_board {
-	int		*board;
+	int		*heaps;
 	size_t	size;
 }			t_board;
 
@@ -34,8 +36,6 @@ void	destroy_board(t_board *board);
 // moves.c:
 int		player_move(t_game *game);
 void	computer_move(t_game *game);
-
-// board_logic.c:
 
 
 #endif
