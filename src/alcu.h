@@ -10,6 +10,9 @@
 # define ERROR_INVALID_MOVE	"Error: Invalid Move!\n"
 
 
+# define BOARD_DEFAULT_CAPACITY 10
+
+
 typedef unsigned long size_t;
 
 enum	e_game_status {
@@ -21,6 +24,7 @@ enum	e_game_status {
 typedef struct s_board {
 	int		*heaps;
 	size_t	size;
+	size_t	capacity;
 }			t_board;
 
 typedef struct s_game {
@@ -29,7 +33,7 @@ typedef struct s_game {
 	size_t	round;
 }			t_game;
 
-// board_create.c:
+// board.c:
 int		read_board(t_board *board, int ac, char** av);
 void	destroy_board(t_board *board);
 
