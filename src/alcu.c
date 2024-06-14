@@ -18,9 +18,9 @@ int main(int ac, char** av) {
 	while (game.game_status == PLAYING)
 	{
 		game.round++;
+		computer_move(&game);
 		if (player_move(&game) != SUCCESS)
 			return (destroy_board(&game.board), FAILURE);
-		computer_move(&game);
 	}
 	destroy_board(&game.board);
 	return (SUCCESS);

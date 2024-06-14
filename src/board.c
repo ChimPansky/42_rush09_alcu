@@ -71,6 +71,7 @@ static int	read_board_from_fd(t_board *board, int fd) {
 		if (grow_board(board, new_heap) != SUCCESS)
 			return (destroy_board(board), FAILURE);
 		board->size++;
+		free(line);
 		line = get_next_line(fd, &gnl_error);
 	}
 	if (gnl_error)

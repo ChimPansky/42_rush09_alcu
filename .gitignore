@@ -1,0 +1,11 @@
+.vscode
+.nfs*
+
+*.pdf
+*.o
+*.d
+*.a
+*.out
+
+build/
+alcu
