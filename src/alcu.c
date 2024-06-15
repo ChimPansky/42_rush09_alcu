@@ -19,19 +19,23 @@ int main(int ac, char** av) {
 	while (game.game_status == PLAYING)
 	{
 		game.round++;
-		computer_move(&game);
+		if(computer_move(&game))
+			return (destroy_board(&game.board), FAILURE);
 		if (check_game_over(&game))
 			continue;
 		display_board(&game.board);
 		if (player_move(&game) != SUCCESS)
 			return (destroy_board(&game.board), FAILURE);
-		check_game_over(&game);
+		if (check_game_over(&game))
+			continue;
 		display_board(&game.board);
 	}
 	if (game.game_status == WON)
-		ft_putstr_fd(STDOUT_FILENO, "Yow Won :)\n");
+		ft_putstr_fd(STDOUT_FILENO, "\nYow Won :)\n");
+	else if (game.game_status == LOST)
+		ft_putstr_fd(STDOUT_FILENO, "\nDESTROYER II has destroyed you :( \n");
 	else
-		ft_putstr_fd(STDOUT_FILENO, "DESTROYER II has destroyed you :( \n");
+	 	ft_putstr_fd(STDERR_FILENO, "\nError\n");
 	destroy_board(&game.board);
 	return (SUCCESS);
 }

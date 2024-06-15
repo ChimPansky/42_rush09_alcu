@@ -19,7 +19,7 @@ int		player_move(t_game *game)
 	char 	*input;
 	int		error;
 	int		num;
-	
+
 	error = 0;
 	num = 0;
 	input = NULL;
@@ -52,9 +52,11 @@ int		player_move(t_game *game)
 	return (SUCCESS);
 }
 
-void	computer_move(t_game *game)
+int	computer_move(t_game *game)
 {
 	ft_putstr_fd(STDOUT_FILENO, "COMPUTER MOVING...\n");
-	update_board(&game->board, ai(game));
+	if (!update_board(&game->board, ai(game)))
+		return -1;
 	game->player_turn = true;
+	return (0);
 }
