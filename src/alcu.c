@@ -1,10 +1,3 @@
-// allowed functions:
-// read
-// write
-// open
-// close
-// malloc
-// free
 #include "alcu.h"
 #include "utils/utils.h"
 #include <unistd.h>
@@ -14,7 +7,7 @@ int main(int ac, char** av) {
 
 	if (read_board(&game.board, ac, av) != SUCCESS)
 		return (FAILURE);
-	ft_putstr_fd(STDOUT_FILENO, "Game starts!\n");
+	ft_putstr_fd(STDOUT_FILENO, "\nGame starts!\n");
 	display_board(&game.board);
 	while (game.game_status == PLAYING)
 	{

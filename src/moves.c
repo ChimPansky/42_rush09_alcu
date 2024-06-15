@@ -15,6 +15,7 @@ bool	check_game_over(t_game *game) {
 	return (false);
 }
 
+#include <stdio.h>
 int		player_move(t_game *game)
 {
 	char 	*input;
@@ -28,12 +29,11 @@ int		player_move(t_game *game)
 	fd = open("/dev/tty", O_RDONLY);
 	if (fd == -1)
 		return (FAILURE);
-	ft_putstr_fd(STDOUT_FILENO, "PLAYER MOVING...\n");
 	ft_putstr_fd(1, "\nInfo: In this row are ");
 	ft_putnbr_fd(1, (int) game->board.heaps[game->board.size - 1]);
 	ft_putstr_fd(1, " stick(s)\n\n");
 	display_msg:
-	ft_putstr_fd(STDOUT_FILENO, "Please enter a number between 1 and 3:\n");
+	ft_putstr_fd(STDOUT_FILENO, "Your move.\nPlease enter a number between 1 and 3:\n");
 	take_input:
 	input = get_next_line(fd, &error);
 	if (error)
@@ -64,7 +64,6 @@ int		player_move(t_game *game)
 
 int	computer_move(t_game *game)
 {
-	ft_putstr_fd(STDOUT_FILENO, "COMPUTER MOVING...\n");
 	if (!update_board(&game->board, ai(game)))
 		return -1;
 	game->player_turn = true;

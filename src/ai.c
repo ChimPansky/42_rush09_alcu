@@ -7,19 +7,19 @@
 // Creates a random number between 1 and 3
 int	ft_random(t_game *game)
 {
-	int	num;
+	int	num = 0;
 	int	fd;
 
 	fd = open("/dev/urandom", O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putstr_fd(2, "Error\nCannot open /dev/urandom\n");
+		ft_putstr_fd(STDOUT_FILENO, "Error\nCannot open /dev/urandom\n");
 		game->game_status = ERROR;
 		return (-1);
 	}
 	if (read(fd, &num, 1) < 0)
 	{
-		ft_putstr_fd(2, "Error\nCannot read /dev/urandom\n");
+		ft_putstr_fd(STDOUT_FILENO, "Error\nCannot read /dev/urandom\n");
 		close(fd);
 		return (-1);
 	}
@@ -174,9 +174,9 @@ int	ai(t_game *game)
 	num = calculate(game);
 	if (num > 0)
 	{
-		ft_putstr_fd(1, "AI took ");
-		ft_putnbr_fd(1, num);
-		ft_putstr_fd(1, "\n");
+		ft_putstr_fd(STDOUT_FILENO, "AI took ");
+		ft_putnbr_fd(STDOUT_FILENO, num);
+		ft_putstr_fd(STDOUT_FILENO, "\n");
 	}
 	return (num);
 }
