@@ -22,11 +22,18 @@ int		player_move(t_game *game)
 	
 	error = 0;
 	num = 0;
+	input = NULL;
 	ft_putstr_fd(STDOUT_FILENO, "PLAYER MOVING...\n");
 	display_msg:
 	ft_putstr_fd(STDOUT_FILENO, "Please enter a number between 1 and 3:\n");
 	take_input:
 	input = get_next_line(0, &error);
+	if (error)
+	{
+		if (input)
+			free(input);
+		return (FAILURE);
+	}
 	if (!input)
 		goto take_input;
 	if (!valid_input(input, &num))
