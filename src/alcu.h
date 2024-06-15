@@ -12,7 +12,7 @@
 # define ERROR_INVALID_MOVE	"Error: Invalid Move!\n"
 
 
-# define BOARD_DEFAULT_CAPACITY 10
+# define BOARD_DEFAULT_CAPACITY 50
 
 
 typedef unsigned long size_t;
@@ -40,6 +40,9 @@ typedef struct s_game {
 // board.c:
 int		read_board(t_board *board, int ac, char** av);
 void	destroy_board(t_board *board);
+
+// display.c:
+void display_board(t_board *board);
 
 // moves.c:
 int		player_move(t_game *game);

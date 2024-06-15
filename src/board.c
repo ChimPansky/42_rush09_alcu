@@ -6,15 +6,16 @@
 #include <stdbool.h>
 
 static	int allocate_board(t_board *board) {
-	size_t	new_size;
+	size_t	new_cap;
 
 	if (board->heaps == NULL)
-		new_size = BOARD_DEFAULT_CAPACITY;
+		new_cap = BOARD_DEFAULT_CAPACITY;
 	else
-		new_size = board->capacity + BOARD_DEFAULT_CAPACITY;
-	board->heaps = malloc(sizeof(int) * new_size);
+		new_cap = board->capacity + BOARD_DEFAULT_CAPACITY;
+	board->heaps = malloc(sizeof(int) * new_cap);
 	if (!board->heaps)
 		return (ft_putstr_fd(STDERR_FILENO, SYS_ERROR_MALLOC), FAILURE);
+	board->capacity = new_cap;
 	return (SUCCESS);
 }
 
@@ -34,18 +35,29 @@ static int	grow_board(t_board *board, int new_heap)
 			i++;
 		}
 	}
-	board->heaps[i] = new_heap;
+	board->heaps[board->size] = new_heap;
 	board->size++;
 	free(tmp_heaps);
 	return (SUCCESS);
 }
 
 static int	extract_int_from_line(char *line) {
-	(void)line;
-	// TODO: read val between 1 and 10000 from line and return it
-	if (false)
+	int	value;
+
+	value = ft_atoi(line);
+	if (value < 1 || value > 10000)
 		return (-1);
-	return (5);
+	return (value);
+}
+
+#include <stdio.h>
+void	print_board(t_board *board) {
+	size_t	i = 0;
+	printf("printing board: size: %lu; capacity: %lu\n", board->size, board->capacity);
+	while (i < board->size) {
+		ft_putnbr_fd(STDOUT_FILENO, board->heaps[i++]);
+		ft_putstr_fd(STDOUT_FILENO, "\n");
+	}
 }
 
 static int	read_board_from_fd(t_board *board, int fd) {
@@ -61,6 +73,10 @@ static int	read_board_from_fd(t_board *board, int fd) {
 	line = get_next_line(fd, &gnl_error);
 	new_heap = 0;
 	while (line) {
+		if (*line == '\n') {
+			free(line);
+			break ;
+		}
 		new_heap = extract_int_from_line(line);
 		if (new_heap < 0) {
 			ft_putstr_fd(STDERR_FILENO, ERROR_READ_HEAPS);
@@ -70,7 +86,6 @@ static int	read_board_from_fd(t_board *board, int fd) {
 		}
 		if (grow_board(board, new_heap) != SUCCESS)
 			return (destroy_board(board), FAILURE);
-		board->size++;
 		free(line);
 		line = get_next_line(fd, &gnl_error);
 	}
