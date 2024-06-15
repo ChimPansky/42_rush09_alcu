@@ -12,9 +12,7 @@
 # define ERROR_READ_HEAPS 	"Error\nEnter a number between 1 and 10000\n"
 # define ERROR_INVALID_MOVE	"Error\nInvalid Move!\n"
 
-
 # define BOARD_DEFAULT_CAPACITY 50
-
 
 typedef unsigned long size_t;
 
@@ -49,12 +47,9 @@ void	destroy_board(t_board *board);
 void 	display_board(t_board *board);
 bool 	update_board(t_board *board, int rm);
 
-
 // moves.c:
 int		player_move(t_game *game);
 void	computer_move(t_game *game);
 bool	check_game_over(t_game *game);
-
-
 
 #endif
