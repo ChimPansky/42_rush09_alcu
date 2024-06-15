@@ -6,7 +6,7 @@
 /*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:48:06 by tkasbari          #+#    #+#             */
-/*   Updated: 2024/06/15 12:35:05 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/06/15 18:38:27 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	ft_putnbr_fd(int fd, int n)
 	}
 	if (nr >= 10)
 	{
-		ft_putnbr_fd(nr / 10, fd);
-		ft_putnbr_fd(nr % 10, fd);
+		ft_putnbr_fd(fd, nr / 10);
+		ft_putnbr_fd(fd, nr % 10);
 	}
 	if (nr < 10)
 	{
