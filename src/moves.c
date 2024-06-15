@@ -3,17 +3,6 @@
 #include <unistd.h>
 #include <stdbool.h>
 
-// static int	take_matches(t_board *board, int amount) {
-// 	int	*last_heap_size;
-
-// 	last_heap_size = &board->heaps[board->size - 1];
-
-// 	if (*last_heap_size < amount)
-// 		return (ft_putstr_fd(STDERR_FILENO, ERROR_INVALID_MOVE), FAILURE);
-// 	*last_heap_size -= amount;
-// 	return (SUCCESS);
-// }
-
 bool	check_game_over(t_game *game) {
 	if (game->board.size < 1) {
 		if (game->player_turn)
@@ -36,6 +25,6 @@ int		player_move(t_game *game)
 void	computer_move(t_game *game)
 {
 	ft_putstr_fd(STDOUT_FILENO, "COMPUTER MOVING...\n");
-	update_board(&game->board, 1);
+	update_board(&game->board, ai(game));
 	game->player_turn = true;
 }

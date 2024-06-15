@@ -37,6 +37,9 @@ typedef struct s_game {
 	bool	player_turn;	// is it the players turn or the AI's turn? (start with false)
 }			t_game;
 
+// ai.c:
+int		ai(t_game *game);
+
 // board.c:
 int		read_board(t_board *board, int ac, char** av);
 void	destroy_board(t_board *board);
@@ -44,6 +47,7 @@ void	destroy_board(t_board *board);
 // display.c:
 void 	display_board(t_board *board);
 bool 	update_board(t_board *board, int rm);
+
 
 // moves.c:
 int		player_move(t_game *game);
