@@ -11,15 +11,16 @@ int	ft_random(t_game *game)
 	int	num;
 	int	fd;
 
-	fd = open("/dev/random", O_RDONLY);
+	fd = open("/dev/urandom", O_RDONLY);
 	if (fd < 0)
 	{
-		ft_putstr_fd(2, "Error: Cannot open /dev/random\n");
+		ft_putstr_fd(2, "Error\nCannot open /dev/urandom\n");
+		game->game_status = ERROR;
 		return (-1);
 	}
 	if (read(fd, &num, 1) < 0)
 	{
-		ft_putstr_fd(2, "Error: Cannot read /dev/random\n");
+		ft_putstr_fd(2, "Error\nCannot read /dev/urandom\n");
 		close(fd);
 		return (-1);
 	}
@@ -51,7 +52,7 @@ int	calc_last_row(t_game *game)
 		else if ((game->board.heaps[0] - 5) % 4 == 3)
 			return (3);
 	}
-	return (-1);
+	return (1);
 }
 
 int	calc_row(t_game *game, int row, int change)
@@ -96,8 +97,7 @@ int	calc_row(t_game *game, int row, int change)
 				return (3);
 		}
 	}
-	printf("Error\n");
-	return (-1);
+	return (1);
 }
 
 void last_row_moves(int *calc_ideal_moves, t_game *game) // for ai
@@ -117,9 +117,9 @@ void last_row_moves(int *calc_ideal_moves, t_game *game) // for ai
 
 void	normal_row_moves(int *calc_ideal_moves, t_game *game, int row)
 {
-	if (game->board.heaps[row] == 1 || game->board.heaps[row] == 2 || game->board.heaps[row] == 3 )
+	if (game->board.heaps[row] == 1 || game->board.heaps[row] == 2 || game->board.heaps[row] == 3 || game->board.heaps[row] == 5)
 		*calc_ideal_moves += 1;
-	else if (game->board.heaps[row] == 4 || game->board.heaps[row] == 5)
+	else if (game->board.heaps[row] == 4)
 		*calc_ideal_moves += 0;
 	else
 	{
@@ -142,15 +142,12 @@ int calc_ideal_moves(t_game *game)
 			break;
 		normal_row_moves(&calc_ideal_moves, game, row);
 	}
-	printf("calc_ideal_moves: %d\n", calc_ideal_moves);
 	if (calc_ideal_moves % 2 == 0)
 	{
 		num = calc_row(game, game->board.size - 1, 0);
-		printf("Ai on the right way. %d\n", num);
 	}
 	else
 	{
-		printf("Ai on the wrong way\n");
 		num = calc_row(game, game->board.size - 1, 1);
 	}
 	return (num);

@@ -21,7 +21,8 @@ typedef unsigned long size_t;
 enum	e_game_status {
 	PLAYING,	// game in progress...
 	WON,		// player won
-	LOST		// AI won
+	LOST,		// AI won
+	ERROR
 };
 
 typedef struct s_board {
@@ -52,7 +53,7 @@ bool 	update_board(t_board *board, int rm);
 
 // moves.c:
 int		player_move(t_game *game);
-void	computer_move(t_game *game);
+int		computer_move(t_game *game);
 bool	check_game_over(t_game *game);
 
 // validation.c
