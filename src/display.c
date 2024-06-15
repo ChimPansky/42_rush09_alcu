@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
+/*   By: bpochlau <bpochlau@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 11:53:47 by mhuszar           #+#    #+#             */
-/*   Updated: 2024/06/15 13:44:35 by tkasbari         ###   ########.fr       */
+/*   Updated: 2024/06/15 17:06:58 by bpochlau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ bool update_board(t_board *board, int rm)
     size_t  counter;
 
     counter = 0;
+    if (rm < 0)
+        return (false);
     while (counter < board->size)
     {
         if (counter == board->size - 1
@@ -62,6 +64,7 @@ void display_board(t_board *board)
     int     sticks;
 
     line = sticks = 0;
+    write(1, "\n", 1);
     while (line < board->size)
     {
         while (sticks < board->heaps[line])
@@ -75,6 +78,7 @@ void display_board(t_board *board)
             return ;
         line++;
     }
+    write(1, "\n", 1);
 }
 /*
 int main(void)
