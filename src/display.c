@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhuszar <mhuszar@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 11:53:47 by mhuszar           #+#    #+#             */
-/*   Updated: 2024/06/15 13:03:07 by mhuszar          ###   ########.fr       */
+/*   Updated: 2024/06/15 13:44:35 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ bool update_board(t_board *board, int rm)
             if (rm <= board->heaps[counter])
             {
                 board->heaps[counter] -= rm;
+				if (board->heaps[counter] == 0)
+					board->size--;
                 return (true);
             }
             else
@@ -78,7 +80,7 @@ void display_board(t_board *board)
 int main(void)
 {
     t_board board;
-    
+
     board.heaps = malloc(sizeof(int) * 4);
     board.heaps[0] = 10;
     board.heaps[1] = 4;

@@ -45,12 +45,14 @@ int		read_board(t_board *board, int ac, char** av);
 void	destroy_board(t_board *board);
 
 // display.c:
-void display_board(t_board *board);
-bool update_board(t_board *board, int rm);
+void 	display_board(t_board *board);
+bool 	update_board(t_board *board, int rm);
+
 
 // moves.c:
 int		player_move(t_game *game);
 void	computer_move(t_game *game);
+bool	check_game_over(t_game *game);
 
 
 #endif
