@@ -30,9 +30,18 @@ int		player_move(t_game *game)
 	if (!input)
 		goto take_input;
 	if (!valid_input(input, &num))
+	{
+		free(input);
 		goto display_msg;
-	update_board(&game->board, num);
+	}
+	if (!update_board(&game->board, num))
+	{
+		ft_putstr_fd(STDOUT_FILENO, "You cannot take more than available\n");
+		free(input);
+		goto take_input;
+	}
 	game->player_turn = false;
+	free(input);
 	return (SUCCESS);
 }
 
