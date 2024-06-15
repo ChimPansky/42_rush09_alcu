@@ -20,6 +20,7 @@ int		player_move(t_game *game)
 	int		num;
 	int		error;
 	
+	error = 0;
 	ft_putstr_fd(STDOUT_FILENO, "PLAYER MOVING...\n");
 	take_input:
 	input = get_next_line(0, &error);
