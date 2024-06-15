@@ -23,9 +23,11 @@ int	ft_random(t_game *game)
 		return (-1);
 	}
 	close(fd);
+	if (num < 0)
+		num *= -1;
 	num = num % 3 + 1;
 	if (num <= game->board.heaps[game->board.size - 1])
-		num -= game->board.heaps[game->board.size - 1];
+		game->board.heaps[game->board.size - 1] -= num;
 	else
 		game->board.heaps[game->board.size - 1] = 0;
 	return (0);
@@ -87,6 +89,7 @@ int	ft_calculate(t_game *game)
 	{
 		ft_calc_last_row(game);
 	}
+	return (0);
 }
 
 int	ai(t_game *game)
@@ -106,3 +109,25 @@ int	ai(t_game *game)
 	}
 	return (0);
 }
+
+// #include <stdio.h>
+// int main (void)
+// {
+// 	t_game game;
+// 	t_board board;
+// 	char str[2];
+
+// 	game.board = board;
+// 	game.board.size = 1;
+// 	game.board.heaps[0] = 17;
+// 	printf("%d\n", game.board.heaps[0]);
+// 	while (game.board.heaps[0] > 0)
+// 	{
+// 		ai(&game);
+// 		printf("%d\n", game.board.heaps[0]);
+// 		read(0, str, 2);
+// 		game.board.heaps[0] -= str[0] - '0';
+// 		printf("%d\n", game.board.heaps[0]);
+// 	}
+// 	return (0);
+// }
