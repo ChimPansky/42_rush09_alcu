@@ -76,11 +76,9 @@ static int	read_board_from_fd(t_board *board, int fd) {
 			break ;
 		}
 		if (!valid_input(line, &new_heap, 10000)) {
-			if (fd == STDIN_FILENO)
-				ft_putstr_fd(STDOUT_FILENO, ERROR_READ_HEAPS);
 			free(line);
-			line = get_next_line(fd, &gnl_error);
-			continue;
+			return (destroy_board(board),
+			ft_putstr_fd(STDERR_FILENO, ERROR_BOARD), FAILURE);
 		}
 		if (grow_board(board, new_heap) != SUCCESS)
 			return (destroy_board(board), FAILURE);
