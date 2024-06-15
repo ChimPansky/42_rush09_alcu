@@ -2,6 +2,7 @@
 # define ALCU_H
 
 #include <stdbool.h>
+#include "./get_next_line/get_next_line.h"
 
 # define SYS_ERROR_GNL		"System Error: Cannot read input!\n"
 # define SYS_ERROR_MALLOC 	"System Error: Cannot allocate memory!\n"
@@ -53,6 +54,7 @@ bool 	update_board(t_board *board, int rm);
 int		player_move(t_game *game);
 void	computer_move(t_game *game);
 bool	check_game_over(t_game *game);
+
 
 
 #endif
