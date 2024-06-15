@@ -1,10 +1,3 @@
-// allowed functions:
-// read
-// write
-// open
-// close
-// malloc
-// free
 #include "alcu.h"
 #include "utils/utils.h"
 #include <unistd.h>

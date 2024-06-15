@@ -50,10 +50,8 @@ static int	extract_int_from_line(char *line) {
 	return (value);
 }
 
-#include <stdio.h>
 void	print_board(t_board *board) {
 	size_t	i = 0;
-	printf("printing board: size: %lu; capacity: %lu\n", board->size, board->capacity);
 	while (i < board->size) {
 		ft_putnbr_fd(STDOUT_FILENO, board->heaps[i++]);
 		ft_putstr_fd(STDOUT_FILENO, "\n");
@@ -79,7 +77,8 @@ static int	read_board_from_fd(t_board *board, int fd) {
 		}
 		new_heap = extract_int_from_line(line);
 		if (new_heap < 0) {
-			ft_putstr_fd(STDERR_FILENO, ERROR_READ_HEAPS);
+			if (fd == STDIN_FILENO)
+				ft_putstr_fd(STDOUT_FILENO, ERROR_READ_HEAPS);
 			free(line);
 			line = get_next_line(fd, &gnl_error);
 			continue;

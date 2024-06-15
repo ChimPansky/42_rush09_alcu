@@ -17,24 +17,24 @@
 typedef unsigned long size_t;
 
 enum	e_game_status {
-	PLAYING,	// game in progress...
-	WON,		// player won
-	LOST,		// AI won
+	PLAYING,
+	WON,
+	LOST,
 	ERROR
 };
 
 typedef struct s_board {
 	int		*heaps;
-	int		max_width;		// longest row(heap) in the board
-	size_t	size;			// number of rows(heaps) - matches will always be removed from heaps[size - 1]
-	size_t	capacity;		// this is for mem alloc...
+	int		max_width;
+	size_t	size;
+	size_t	capacity;
 }			t_board;
 
 typedef struct s_game {
 	int	game_status;
 	t_board	board;
-	size_t	round;			// start with 0 and increase at the beginning of each round
-	bool	player_turn;	// is it the players turn or the AI's turn? (start with false)
+	size_t	round;
+	bool	player_turn;	
 }			t_game;
 
 // ai.c:
