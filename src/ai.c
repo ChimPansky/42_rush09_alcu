@@ -3,7 +3,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "./utils/utils.h"
-#include <stdio.h>
 
 // Creates a random number between 1 and 3
 int	ft_random(t_game *game)

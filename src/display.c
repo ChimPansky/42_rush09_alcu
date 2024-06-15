@@ -6,7 +6,7 @@
 /*   By: bpochlau <bpochlau@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 11:53:47 by mhuszar           #+#    #+#             */
-/*   Updated: 2024/06/15 17:06:58 by bpochlau         ###   ########.fr       */
+/*   Updated: 2024/06/15 18:16:38 by bpochlau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void display_board(t_board *board)
     {
         while (sticks < board->heaps[line])
         {
+            if (sticks > 0)
+                write(1, " ", 1);
             write(1, "|", 1);
             sticks++;
         }
