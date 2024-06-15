@@ -4,13 +4,13 @@
 #include <stdbool.h>
 #include "./get_next_line/get_next_line.h"
 
-# define SYS_ERROR_GNL		"Error\nSystem Error: Cannot read input!\n"
-# define SYS_ERROR_MALLOC 	"Error\nSystem Error: Cannot allocate memory!\n"
-# define ERROR_ARGUMENTS 	"Error\nInvalid program arguments!\n"
-# define ERROR_INPUT_FILE 	"Error\nCannot open input file!\n"
-# define ERROR_BOARD 		"Error\nInvalid Board!\n"
-# define ERROR_READ_HEAPS 	"Error\nEnter a number between 1 and 10000\n"
-# define ERROR_INVALID_MOVE	"Error\nInvalid Move!\n"
+# define SYS_ERROR_GNL		"ERROR\nSystem Error: Cannot read input!\n"
+# define SYS_ERROR_MALLOC 	"ERROR\nSystem Error: Cannot allocate memory!\n"
+# define ERROR_ARGUMENTS 	"ERROR\nInvalid program arguments!\n"
+# define ERROR_INPUT_FILE 	"ERROR\nCannot open input file!\n"
+# define ERROR_BOARD 		"ERROR\nInvalid Board!\n"
+# define ERROR_READ_HEAPS 	"ERROR\nEnter a number between 1 and 10000\n"
+# define ERROR_INVALID_MOVE	"ERROR\nInvalid Move!\n"
 
 # define BOARD_DEFAULT_CAPACITY 50
 
