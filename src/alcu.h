@@ -40,7 +40,9 @@ typedef struct s_game {
 // board.c:
 int		read_board(t_board *board, int ac, char** av);
 void	destroy_board(t_board *board);
-void	print_board(t_board *board);
+
+// display.c:
+void display_board(t_board *board);
 
 // moves.c:
 int		player_move(t_game *game);

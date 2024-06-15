@@ -24,6 +24,7 @@ lft:
 FILENAMES += \
 	alcu.c \
 	board.c \
+	display.c \
 	moves.c
 
 FILENAMES += \
