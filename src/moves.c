@@ -2,7 +2,6 @@
 #include "utils/utils.h"
 #include <unistd.h>
 #include <stdbool.h>
-
 // static int	take_matches(t_board *board, int amount) {
 // 	int	*last_heap_size;
 
@@ -28,7 +27,7 @@ int		player_move(t_game *game)
 
 void	computer_move(t_game *game)
 {
-	ft_putstr_fd(STDOUT_FILENO, "COMPUTER MOVING...");
-	if (game->round > 10)
-		game->game_status = LOST;
+	update_board(&game->board, ai(game));
+	// if (game->round > 10)
+	// 	game->game_status = LOST;
 }
