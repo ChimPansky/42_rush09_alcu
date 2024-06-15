@@ -22,6 +22,7 @@ int main(int ac, char** av) {
 		computer_move(&game);
 		if (check_game_over(&game))
 			continue;
+		display_board(&game.board);
 		if (player_move(&game) != SUCCESS)
 			return (destroy_board(&game.board), FAILURE);
 		check_game_over(&game);
