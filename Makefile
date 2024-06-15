@@ -32,7 +32,10 @@ FILENAMES += \
 	get_next_line/ft_memmove.c
 
 FILENAMES += \
+	utils/ft_atoi.c \
+	utils/ft_isdigit.c \
 	utils/ft_isspace.c \
+	utils/ft_putnbr_fd.c \
 	utils/ft_putstr_fd.c \
 	utils/ft_strlen.c
 

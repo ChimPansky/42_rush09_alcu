@@ -21,6 +21,7 @@ int main(int ac, char** av) {
 		computer_move(&game);
 		if (player_move(&game) != SUCCESS)
 			return (destroy_board(&game.board), FAILURE);
+		print_board(&game.board);
 	}
 	destroy_board(&game.board);
 	return (SUCCESS);
