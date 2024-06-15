@@ -29,6 +29,9 @@ int		player_move(t_game *game)
 	if (fd == -1)
 		return (FAILURE);
 	ft_putstr_fd(STDOUT_FILENO, "PLAYER MOVING...\n");
+	ft_putstr_fd(1, "\nInfo: In this row are ");
+	ft_putnbr_fd(1, (int) game->board.heaps[game->board.size - 1]);
+	ft_putstr_fd(1, " stick(s)\n\n");
 	display_msg:
 	ft_putstr_fd(STDOUT_FILENO, "Please enter a number between 1 and 3:\n");
 	take_input:
