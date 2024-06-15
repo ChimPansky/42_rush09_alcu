@@ -41,14 +41,14 @@ static int	grow_board(t_board *board, int new_heap)
 	return (SUCCESS);
 }
 
-static int	extract_int_from_line(char *line) {
-	int	value;
+// static int	extract_int_from_line(char *line) {
+// 	int	value;
 
-	value = ft_atoi(line);
-	if (value < 1 || value > 10000)
-		return (-1);
-	return (value);
-}
+// 	value = ft_atoi(line);
+// 	if (value < 1 || value > 10000)
+// 		return (-1);
+// 	return (value);
+// }
 
 void	print_board(t_board *board) {
 	size_t	i = 0;
@@ -75,8 +75,7 @@ static int	read_board_from_fd(t_board *board, int fd) {
 			free(line);
 			break ;
 		}
-		new_heap = extract_int_from_line(line);
-		if (new_heap < 0) {
+		if (!valid_input(line, &new_heap, 10000)) {
 			if (fd == STDIN_FILENO)
 				ft_putstr_fd(STDOUT_FILENO, ERROR_READ_HEAPS);
 			free(line);

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mhuszar <mhuszar@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: tkasbari <thomas.kasbarian@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 14:37:56 by mhuszar           #+#    #+#             */
-/*   Updated: 2024/06/15 14:45:46 by mhuszar          ###   ########.fr       */
+/*   Updated: 2024/06/15 18:53:17 by tkasbari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "alcu.h"
 #include "utils/utils.h"
 
-bool    valid_input(char *input, int *og)
+bool    valid_input(char *input, int *og, int max)
 {
     int num;
     int counter;
@@ -28,7 +28,7 @@ bool    valid_input(char *input, int *og)
         counter++;
     }
     num = ft_atoi(input);
-    if (num < 1 || num > 3)
+    if (num < 1 || num > max)
         return (false);
     *og = num;
     return (true);

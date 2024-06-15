@@ -34,7 +34,7 @@ typedef struct s_game {
 	int	game_status;
 	t_board	board;
 	size_t	round;
-	bool	player_turn;	
+	bool	player_turn;
 }			t_game;
 
 // ai.c:
@@ -54,6 +54,6 @@ int		computer_move(t_game *game);
 bool	check_game_over(t_game *game);
 
 // validation.c
-bool    valid_input(char *input, int *og);
+bool    valid_input(char *input, int *og, int max);
 
 #endif
