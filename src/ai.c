@@ -27,87 +27,58 @@ int	ft_random(t_game *game)
 		num *= -1;
 	num = num % 3 + 1;
 	if (num <= game->board.heaps[game->board.size - 1])
-		game->board.heaps[game->board.size - 1] -= num;
-	else
-		game->board.heaps[game->board.size - 1] = 0;
-	return (0);
+		return (num);
+	return (game->board.heaps[game->board.size - 1]);
 }
 
-int	ft_calc_last_row(t_game *game)
+int	calc_last_row(t_game *game)
 {
-	if (game->board.heaps[0] == 1)
-	{
-		game->board.heaps[0] = 0;
-		ft_putstr_fd(1, "AI took 1\n");
-	}
-	else if (game->board.heaps[0] == 2)
-	{
-		game->board.heaps[0] = 1;
-		ft_putstr_fd(1, "AI took 1\n");
-	}
+	if (game->board.heaps[0] == 1 || game->board.heaps[0] == 2 || game->board.heaps[0] == 5)
+		return (1);
 	else if (game->board.heaps[0] == 3)
-	{
-		game->board.heaps[0] = 1;
-		ft_putstr_fd(1, "AI took 2\n");
-	}
+		return (2);
 	else if (game->board.heaps[0] == 4)
-	{
-		game->board.heaps[0] = 1;
-		ft_putstr_fd(1, "AI took 3\n");
-	}
-	else if (game->board.heaps[0] == 5)
-	{
-		game->board.heaps[0] = 4;
-		ft_putstr_fd(1, "AI took 1\n");
-	}
+		return (3);
 	else
 	{
 		if ((game->board.heaps[0] - 5) % 4 == 0)
-			ft_random(game);
+			return (ft_random(game));
 		else if ((game->board.heaps[0] - 5) % 4 == 1)
-		{
-			game->board.heaps[0] -= 1;
-			ft_putstr_fd(1, "AI took 1\n");
-		}
+			return (1);
 		else if ((game->board.heaps[0] - 5) % 4 == 2)
-		{
-			game->board.heaps[0] -= 2;
-			ft_putstr_fd(1, "AI took 2\n");
-		}
+			return (2);
 		else if ((game->board.heaps[0] - 5) % 4 == 3)
-		{
-			game->board.heaps[0] -= 3;
-			ft_putstr_fd(1, "AI took 3\n");
-		}
+			return (3);
 	}
-	return (0);
+	return (-1);
 }
 
-int	ft_calculate(t_game *game)
+int	calculate(t_game *game)
 {
+	int	num = -1;
+
 	if  (game->board.size == 1)
 	{
-		ft_calc_last_row(game);
+		num = calc_last_row(game);
 	}
-	return (0);
+	return (num);
 }
 
 int	ai(t_game *game)
 {
-	// The computer starts playing
-	// goal: leave the player with 1 heap
+	int num;
 
 	if (game->board.size > 1)
-	{
-		if (ft_random(game))
-			return (1);
-	}
+		num = ft_random(game);
 	else
+		num = calculate(game);
+	if (num > 0)
 	{
-		if (ft_calculate(game))
-			return (1);
+		ft_putstr_fd(1, "AI took ");
+		ft_putnbr_fd(1, num);
+		ft_putstr_fd(1, "\n");
 	}
-	return (0);
+	return (num);
 }
 
 // #include <stdio.h>
