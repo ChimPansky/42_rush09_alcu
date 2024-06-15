@@ -45,7 +45,7 @@ int		player_move(t_game *game)
 	}
 	if (!input)
 		goto take_input;
-	if (!valid_input(input, &num))
+	if (!valid_input(input, &num, 3))
 	{
 		free(input);
 		goto display_msg;
