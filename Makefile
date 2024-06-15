@@ -26,7 +26,8 @@ FILENAMES += \
 	board.c \
 	display.c \
 	moves.c \
-	ai.c
+	ai.c \
+	validation.c
 
 FILENAMES += \
 	get_next_line/get_next_line.c \
