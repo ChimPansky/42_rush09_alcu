@@ -17,18 +17,21 @@ bool	check_game_over(t_game *game) {
 int		player_move(t_game *game)
 {
 	char 	*input;
-	int		num;
 	int		error;
+	int		num;
 	
 	error = 0;
+	num = 0;
 	ft_putstr_fd(STDOUT_FILENO, "PLAYER MOVING...\n");
+	display_msg:
+	ft_putstr_fd(STDOUT_FILENO, "Please enter a number between 1 and 3:\n");
 	take_input:
 	input = get_next_line(0, &error);
 	if (!input)
 		goto take_input;
-	num = ft_atoi(input); //need to work on validation
+	if (!valid_input(input, &num))
+		goto display_msg;
 	update_board(&game->board, num);
-	//write(1, "\n", 1);
 	game->player_turn = false;
 	return (SUCCESS);
 }

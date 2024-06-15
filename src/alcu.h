@@ -55,6 +55,7 @@ int		player_move(t_game *game);
 void	computer_move(t_game *game);
 bool	check_game_over(t_game *game);
 
-
+// validation.c
+bool    valid_input(char *input, int *og);
 
 #endif
